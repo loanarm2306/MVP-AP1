@@ -1,0 +1,68 @@
+schema: '2.0'
+stages:
+  calidad_datos:
+    cmd: pytest tests/test_calidad_datos.py
+    deps:
+    - path: data/raw/datos_creditos.csv
+      hash: md5
+      md5: 3b26edd22e8827f890d7cd32efe475b7
+      size: 663047
+      isexec: true
+    - path: data/raw/datos_tarjetas.csv
+      hash: md5
+      md5: 9e197c893925601cd447c81256e8cf07
+      size: 845190
+      isexec: true
+    - path: tests/test_calidad_datos.py
+      hash: md5
+      md5: 113e120677b6cd5bb06f42ffdc5ea374
+      size: 3543
+  visualizaciones:
+    cmd: python src/generar_visualizaciones.py
+    deps:
+    - path: data/raw/datos_creditos.csv
+      hash: md5
+      md5: 3b26edd22e8827f890d7cd32efe475b7
+      size: 663047
+      isexec: true
+    - path: data/raw/datos_tarjetas.csv
+      hash: md5
+      md5: 9e197c893925601cd447c81256e8cf07
+      size: 845190
+      isexec: true
+    - path: src/generar_visualizaciones.py
+      hash: md5
+      md5: 67a894ac77ea3a9d928b43145ca964d4
+      size: 2993
+    outs:
+    - path: reports/figures
+      hash: md5
+      md5: 362bf0cf81458d57d7513fc21c022352.dir
+      size: 306891
+      nfiles: 10
+  preparacion_datos:
+    cmd: python src/preparar_datos.py
+    deps:
+    - path: data/raw/datos_creditos.csv
+      hash: md5
+      md5: 3b26edd22e8827f890d7cd32efe475b7
+      size: 663047
+      isexec: true
+    - path: data/raw/datos_tarjetas.csv
+      hash: md5
+      md5: 9e197c893925601cd447c81256e8cf07
+      size: 845190
+      isexec: true
+    - path: src/preparar_datos.py
+      hash: md5
+      md5: 430c3f44318c0b386c77aab8b079620c
+      size: 3040
+    outs:
+    - path: data/processed/datos_modelo.csv
+      hash: md5
+      md5: ee762e9f90dda990aa00eafabbacb971
+      size: 1985194
+    - path: reports/preparacion_datos_resumen.txt
+      hash: md5
+      md5: 5a6a782e015d009e5bc6f8c75b4eeff2
+      size: 1081

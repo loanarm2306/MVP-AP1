@@ -1,0 +1,24 @@
+stages:
+  calidad_datos:
+    cmd: pytest tests/test_calidad_datos.py
+    deps:
+    - data/raw/datos_creditos.csv
+    - data/raw/datos_tarjetas.csv
+    - tests/test_calidad_datos.py
+  visualizaciones:
+    cmd: python src/generar_visualizaciones.py
+    deps:
+    - data/raw/datos_creditos.csv
+    - data/raw/datos_tarjetas.csv
+    - src/generar_visualizaciones.py
+    outs:
+    - reports/figures
+  preparacion_datos:
+    cmd: python src/preparar_datos.py
+    deps:
+    - data/raw/datos_creditos.csv
+    - data/raw/datos_tarjetas.csv
+    - src/preparar_datos.py
+    outs:
+    - data/processed/datos_modelo.csv
+    - reports/preparacion_datos_resumen.txt
