@@ -6,3 +6,5 @@ __pycache__/
 data/processed/
 reports/figures/*.png
 reports/figures/*.jpg
+mlruns/
+models/
