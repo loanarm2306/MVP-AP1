@@ -66,3 +66,42 @@ stages:
       hash: md5
       md5: 5a6a782e015d009e5bc6f8c75b4eeff2
       size: 1081
+  entrenamiento_modelo:
+    cmd: python src/entrenar_modelo.py
+    deps:
+    - path: data/processed/datos_modelo.csv
+      hash: md5
+      md5: ee762e9f90dda990aa00eafabbacb971
+      size: 1985194
+    - path: src/entrenar_modelo.py
+      hash: md5
+      md5: 805be4fed6bbd643859a8a224fc49db0
+      size: 8520
+    outs:
+    - path: models/modelo_mora.pkl
+      hash: md5
+      md5: c463e8204354b50a7e1abde6ab6f6646
+      size: 8393
+    - path: reports/metricas_modelo.json
+      hash: md5
+      md5: 61fdaa6b11899a70ca43872e081ab555
+      size: 1974
+    - path: reports/resultados_experimentacion.csv
+      hash: md5
+      md5: 87ba7a6dbf0437c75aedab998e96a919
+      size: 1179
+  validacion_modelo:
+    cmd: pytest tests/test_modelo.py
+    deps:
+    - path: models/modelo_mora.pkl
+      hash: md5
+      md5: c463e8204354b50a7e1abde6ab6f6646
+      size: 8393
+    - path: reports/metricas_modelo.json
+      hash: md5
+      md5: 61fdaa6b11899a70ca43872e081ab555
+      size: 1974
+    - path: tests/test_modelo.py
+      hash: md5
+      md5: cce6285ccb56258e779ca3aeea728b25
+      size: 1334

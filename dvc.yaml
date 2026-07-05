@@ -22,3 +22,18 @@ stages:
     outs:
     - data/processed/datos_modelo.csv
     - reports/preparacion_datos_resumen.txt
+  entrenamiento_modelo:
+    cmd: python src/entrenar_modelo.py
+    deps:
+    - data/processed/datos_modelo.csv
+    - src/entrenar_modelo.py
+    outs:
+    - models/modelo_mora.pkl
+    - reports/metricas_modelo.json
+    - reports/resultados_experimentacion.csv
+  validacion_modelo:
+    cmd: pytest tests/test_modelo.py
+    deps:
+    - models/modelo_mora.pkl
+    - reports/metricas_modelo.json
+    - tests/test_modelo.py
