@@ -26,14 +26,14 @@ uvicorn app.api:app --host 0.0.0.0 --port $PORT
 
 ## Aplicación Streamlit
 
-La aplicación web se ha desarrollado con Streamlit y permite a los usuarios introducir valores de las variables del modelo para obtener una predicción de riesgo de mora.
+La aplicación web se ha desplegado en Streamlit Cloud y se encuentra disponible en:
 
-Comando local de ejecución:
+https://mvp-ap1-4pfz2kgubnhcb94vfec3op.streamlit.app/
 
-streamlit run app/streamlit_app.py
+La aplicación consume la API publicada en Render:
 
-Para el despliegue en Streamlit Cloud, la aplicación debe configurar la siguiente variable o secreto:
+https://mvp-ap.onrender.com
+
+Para producción, la aplicación utiliza la variable/secreto:
 
 API_URL=https://mvp-ap.onrender.com
-
-De esta forma, la interfaz web consulta la API publicada en Render y utiliza el modelo desplegado para generar predicciones.
